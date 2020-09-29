@@ -10,7 +10,7 @@
     "name": "Norbert",
     "price": 2900,
     "imageUrl": "http://localhost:3000/images/teddy_1.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "description": "Norbert Ours en Peluche de 32 cm Marron ideal pour calin Lorem ipsum dolor sit amet, consectetur adipisicing elit"
   },
   {
     "colors": [
@@ -22,7 +22,7 @@
     "name": "Arnold",
     "price": 3900,
     "imageUrl": "http://localhost:3000/images/teddy_2.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "description": "Lifestyle & More Ours en Peluche géant 25 cm petit Ours en Peluche Doudou velouté Doux - à Aimer"
   },
   {
     "colors": [
@@ -31,7 +31,7 @@
     "_id": "5beaaa8f1c9d440000a57d95",
     "name": "Lenny and Carl",
     "price": 5900,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Offrez cet ours polaire en peluche le plus adorable, de 18 cm, à votre enfant pour le rassurer. Ce nounours est signé CP Company",
     "imageUrl": "http://localhost:3000/images/teddy_3.jpg"
   },
   {
@@ -44,7 +44,7 @@
     "name": "Gustav",
     "price": 4500,
     "imageUrl": "http://localhost:3000/images/teddy_4.jpg",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "description": "Ours en peluche habillé d'un joli tee-shirt avec un coeur de 28 cm si doux, de couleur marron-clair"
   },
   {
     "colors": [
@@ -55,7 +55,7 @@
     "_id": "5beaacd41c9d440000a57d97",
     "name": "Garfunkel",
     "price": 5500,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Inware - Peluche Ours Garfunkel, Assis, Beige, 12 cm",
     "imageUrl": "http://localhost:3000/images/teddy_5.jpg"
   }
 ]
