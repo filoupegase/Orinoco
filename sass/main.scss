@@ -1,5 +1,12 @@
-@tailwind base;
 
-@tailwind components;
 
-@tailwind utilities;
+img.block-animation {
+  width: 100%;
+  height: 100%;
+  transition: transform 450ms, opacity 250ms 50ms;
+
+  &:hover {
+    transform: scale(1.1);
+    opacity: 0.5;
+  }
+}

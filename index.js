@@ -2,7 +2,7 @@ const god = document.getElementById('teddysCard'); //récupération id=main
 const apiURL = "http://localhost:3000/api/teddies/";
 const jsonURL = "./teddy.json";
 
-fetch(jsonURL)
+fetch(apiURL)
     .then(response => {
         if (response.ok) {
             return response.json()
@@ -13,11 +13,11 @@ fetch(jsonURL)
     .then(data => {
         data.forEach(objet => {
 
-            let priceProd = objet.price / 100; //variable prix pour le diviser par 100
+            let priceProd = objet.price / 100;
 
             god.innerHTML += `
-            <div class="max-w-sm rounded overflow-hidden shadow-lg bg-white cursor-pointer">
-            <img class="w-full" src="${objet.imageUrl}" alt="${objet.name}">
+            <div class="max-w-sm parent rounded overflow-hidden shadow-lg bg-white cursor-pointer">
+            <img class="w-full parent child" src="${objet.imageUrl}" alt="${objet.name}">
             <div class="px-6 py-4">
                 <div class="font-bold text-2xl mb-2">${objet.name}</div>
                 <div class="text-lg mb-2">${priceProd.toFixed(2)} €</div>

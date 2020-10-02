@@ -13,6 +13,14 @@ html {
   -webkit-text-size-adjust: 100%; /* 2 */
 }
 
+.parent {
+    transition: transform 450ms;
+}
+.parent:hover > .child {
+     transform: scale(1.13);
+}
+
+
 /* Sections
    ========================================================================== */
 
