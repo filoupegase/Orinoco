@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.parent {
+    transition: transform 600ms;
+}
+.parent:hover > .child {
+    transform: scale(1.13);
+}
+
+.animation {
+    transition: transform 470ms;
+}
+.animation:hover {
+    transform: scale(1.13);
+}

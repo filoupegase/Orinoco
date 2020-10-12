@@ -7,7 +7,7 @@ console.log(params);
 fetch(`http://localhost:3000/api/teddies/${params.get('id')}`) //je met l'id du produit clické dans le fetch
     .then(response => {
         if (response.ok) {
-            return data = response.json()
+            return response.json()
         } else {
             Promise.reject(response.status);
         }
@@ -16,12 +16,10 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`) //je met l'id du 
         //--suppression de la boucle
         //--variable prix pour le diviser par 100
         let priceProd = data.price / 100;
-
         //--variable vide + boucle pour créer le select qui accueil
         let color = "";
-
-        data.colors.forEach(lentille => {
-            color += `<option value="${lentille}">${lentille}</option>`;
+        data.colors.forEach(couleur => {
+            color += `<option value="${couleur}">${couleur}</option>`;
         });
 
         //--Ecriture du HTML en dynamique
@@ -69,14 +67,8 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`) //je met l'id du 
           </span>
                 </div>
                 <p class="leading-relaxed">${data.description}</p>
-                <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
-                    <div class="flex">
-                        <span class="mr-3">Colors</span>
-                        <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                        <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                        <button class="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
-                    </div>
-                    <div class="flex ml-6 items-center">
+                <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">         
+                    <div class="flex items-center">
                         <span for="inlineFormCustomSelect" class="mr-3">Colors</span>
                         <div class="relative">
                             <select id="inlineFormCustomSelect" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">

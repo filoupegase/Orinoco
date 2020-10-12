@@ -2,6 +2,12 @@ const god = document.getElementById('teddysCard'); //récupération id=main
 const apiURL = "http://localhost:3000/api/teddies/";
 const jsonURL = "./teddy.json";
 
+//const data = [{ name: "paul", age: 21, techno: "php" }, { name: "TITI", age: 21, techno: "pp" }]
+const data = JSON.parse(localStorage.getItem("data"))
+console.log(data);
+data.push({ name: "marcel", age: 42, techno: "front web" })
+localStorage.setItem("data", JSON.stringify(data));
+
 fetch(apiURL)
     .then(response => {
         if (response.ok) {
@@ -34,17 +40,3 @@ fetch(apiURL)
             console.log(data);
         })
     }).catch(error => alert("Erreur : " + error));
-/*
-fetch("http://localhost:3000/api/teddies/")
-    .then(response => response.json())
-    .then(response => alert(JSON.stringify(response)))
-    .catch(error => alert("Erreur : " + error));
-*/
-/*
-fetch(apiURL)
-    .then(response=>response.json())
-    .then(data=>{
-        console.log(data);
-    });
-console.log(apiURL);
-*/
