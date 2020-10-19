@@ -3,10 +3,10 @@ const apiURL = "http://localhost:3000/api/teddies/";
 const jsonURL = "./teddy.json";
 
 //const data = [{ name: "paul", age: 21, techno: "php" }, { name: "TITI", age: 21, techno: "pp" }]
-const data = JSON.parse(localStorage.getItem("data"))
-console.log(data);
-data.push({ name: "marcel", age: 42, techno: "front web" })
-localStorage.setItem("data", JSON.stringify(data));
+//const data = JSON.parse(localStorage.getItem("data"))
+//console.log(data);
+//data.push({ name: "marcel", age: 42, techno: "front web" })
+//localStorage.setItem("data", JSON.stringify(data));
 
 fetch(apiURL)
     .then(response => {
@@ -36,7 +36,7 @@ fetch(apiURL)
                 <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Orinoco</span>
             </div>
         </div>
-        </a>`; //j'injecte mon HTML avec les bonnes variables directement dans le DOM
+        </a>`
             console.log(data);
         })
     }).catch(error => alert("Erreur : " + error));
