@@ -114,14 +114,14 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`) //je met l'id du 
         //---on catch les données voulues et on stocke dans un objet
         function ajoutLocalStor() {
 
-            let lensElm = document.getElementById('inlineFormCustomSelect');
+            let colorElm = document.getElementById('inlineFormCustomSelect');
             let quantityElm = document.getElementById('inputQuantite');
 
             let toAddTab = {
                 idProd: data._id,
                 image: data.imageUrl,
                 name: data.name,
-                lens: lensElm.value,
+                colors: colorElm.value,
                 quantite: quantityElm.value,
                 totalPrice: (data.price * parseInt(quantityElm.value)) / 100,
                 price: data.price / 100

@@ -1,319 +1,56 @@
 const inHtml = document.getElementById('main');
+//const prixInHtml = document.getElementById('finalPrice');
 
+//--Boucle de création du HTML--
+for (let i = 0; i < localStorage.length; i++) {
+    let elmPanier = localStorage.key(i);
+    let data = JSON.parse(localStorage.getItem(elmPanier));
 
-function renderBasket() {
-
-    inHtml.innerHTML = "";
-
-    for (let i = 0; i < localStorage.length; i++) {
-        let elmPanier = localStorage.key(i);
-        let elmPanierJson = JSON.parse(localStorage.getItem(elmPanier));
-
-
-        console.log(elmPanierJson);
-
-        inHtml.innerHTML += `
-        <div class="row m-4 panierLine">
-            <div class="col-lg-4">
-                <img alt="${elmPanierJson.name}" class="img-fluid" src="${elmPanierJson.image}">
-            </div>
-            <div class="col-lg-7">
-                <h2>${elmPanierJson.name}</h2>
-                <label for="QuantiteProduit">Quantité:</label>
-                <input id="inputQuantite${i}" type="number" min="1" value="${elmPanierJson.quantite}"/>
-                <p>lentilles : ${elmPanierJson.lens}</p>
-                <p><span id="totalPrice${i}">${elmPanierJson.totalPrice.toFixed(2)}</span> €</p>
-                <button id="supprim${elmPanierJson.idProd}" class="btn btn-secondary" alt="supprimer le produit ">X</button>
-            </div>
-        </div>
-        `;
-
-        //--suppression produit
-        let allButtonsOnPage = document.querySelectorAll('button');
-
-        let logButtonIndex = function(buttonIndex) {
-            console.log('buttonIndex:', buttonIndex);
-        };
-
-        allButtonsOnPage.forEach(function(button, index) {
-            button.addEventListener('click', function() {
-                localStorage.removeItem(elmPanierJson.idProd)
-                logButtonIndex(index);
-                console.log(index);
-                console.log(localStorage);
-                renderBasket();
-            });
-        });
-
-
-
-        // if (localStorage.getItem(elmPanierJson.idProd)) {
-        // let suppr = document.getElementById(`supprim${elmPanierJson.idProd}`);
-        // suppr.addEventListener('click', () => {
-        //     localStorage.removeItem(elmPanierJson.idProd);
-        //     renderBasket();
-        // });
-        //};
-
-        let quantites = document.getElementById(`inputQuantite${i}`);
-        quantites.addEventListener('change', (event) => {
-            const result = document.getElementById(`totalPrice${i}`);
-            result.textContent = `${elmPanierJson.price}` * `${event.target.value}`;
-
-        });
-        //ajout de la nouvelle quantité au LS
-        // localStorage = JSON.stringify(result);
-        //prix total produit parcourir le tableau => totalPrice = prixfinal
-
-    };
-
-};
-
-
-if (localStorage.length == 0) {
-    inHtml.innerHTML = `<div class="container-fluid">
-                    <img class="center-block gif" alt="" src="images/polizas_gif.gif" />
-                    <p class="text-center lead">Votre panier est vide :'(</p>
-                    </div>`;
-
-} else {
-    renderBasket();
-};
-
-// function calculePrice(elmPanierJson.totalPrice) {
-//
-// };
-
-/* pour le problèem de suppression, peut-être avec un if else, si click sur supprim alors i-- */
-
-
-
-
-//parcourir querySelectorAll
-
-
-
-
-
-
-
-//------ajouter un bouton CONTINUER MES ACHATS !!!
-
-/* Idee DRY créer un function test regExp () {
-    if
-    else if
-    esle
+    inHtml.innerHTML += `
+<div class="flex bg-white rounded-lg mx-4 md:mx-auto max-w-md md:max-w-2xl rounded border border-red">
+   <div class="flex items-start px-4 py-6">
+      <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="${data.image}" alt="${data.name}">
+      <div class="">
+         <div class="flex items-center justify-between">
+           <h2 class="text-lg font-semibold text-gray-900 mt-1">${data.name}</h2>
+         </div>
+         <p class="text-gray-700"><strong class="text-lg font-semibold text-gray-900 -mt-1">Quantité</strong> : ${data.quantite}</p>
+         <p class="text-gray-700"><strong class="text-lg font-semibold text-gray-900 -mt-1">Colors</strong> : ${data.colors}</p>
+          <p><strong>Prix : <span class="text-gray-700">${data.totalPrice.toFixed(2)} €</span></strong></p>   
+         <p class="mt-3 text-gray-700 text-sm">
+            Lorem ipsum, dolor sit amet conse. Saepe optio minus rem dolor sit amet!
+         </p>
+              <i onclick="supprimerItem('${data.idProd}')" class="far fa-times-circle mt-3 cursor-pointer"></i>
+         </div>
+      </div>
+   </div>
+`;
 }
-const validPrenom = function(inputPrenom) {
-    let prenomRegExp = new RegExp (ici regex en variable comme toute les autres)
-    console.log(validPrenom);
-   et ici on place la fonction {
-       if
-       else if
-       else
-   }
-};
-*/
 
-/*************VALIDATION FORMULAIRE******************/
-
-//if (input = NULL) {alert("touts les champs sont obligatoires")}
+if (localStorage.length === 0) {
+    inHtml.innerHTML = `<div class="container-fluid mb-7 items-center">
+                            <img class="items-center" style="width: 40%;" alt="empty box gif" src="https://media.giphy.com/media/3ohhwsjzpejaSWoTkI/source.gif" />
+                            <p class="lead">Votre panier est vide</p>
+                        </div>`;}
 
 
-let form = document.querySelector('#submitForm');
+function totaPrice() {
 
-//--ecoute modification Prénom
-form.prenom.addEventListener('change', function() {
-    validPrenom(this);
-});
+    //on enregistre les valeurs du prix total dans une variable
+    var total = localStorage.getItem('prixTotal');
+    var prixPanier = document.getElementById('total');
 
-//--Ecoute modification Nom
-form.nom.addEventListener('change', function() {
-    validNom(this);
-});
-
-//--Ecoute modification Adresse
-form.adresse.addEventListener('change', function() {
-    validAdresse(this);
-});
-
-//--Ecoute modification Ville
-form.ville.addEventListener('change', function() {
-    validVille(this);
-});
-
-//--Ecoute modification Email
-form.email.addEventListener('change', function() {
-    validEmail(this);
-});
-
-//--Ecoute soumission formulaire
-form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    if (validPrenom(form.prenom) && validNom(form.nom) &&
-        validAdresse(form.adresse) && validVille(form.ville) &&
-        validEmail(form.email)) {
-        form.submit();
-    } else {
-        alert("Ola coquinou ! Tous les champs sont obligatoire et doivent être valide");
+    // affichage du prix total du panier si le panier contient quelque chose...Sinon on affiche "votre panier est vide"
+    if (total != null) {
+        prixPanier.textContent = 'Le montant de votre commande est de : ' + total +  ' €';
+        prixPanier.id = 'prixTotal';
+    } else  {
+        prixPanier.textContent = 'Le montant de votre commande est de : 0 €';
     }
+}
 
-});
-
-//--Validation Prénom
-const validPrenom = function(inputPrenom) {
-
-    let prenomRegExp = new RegExp('^[a-zA-ZÀ-ú\-\s]*', 'g');
-    let small = inputPrenom.nextElementSibling;
-
-    console.log(validPrenom);
-
-    if (inputPrenom.value == "" || inputPrenom.value.length < 2) {
-        small.innerHTML = `Requis : 2 caractères minimum !`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    } else if (prenomRegExp.test(inputPrenom.value)) {
-        small.innerHTML = `Valide`;
-        small.classList.remove('text-danger');
-        small.classList.add('text-success');
-        return true;
-    } else {
-        small.innerHTML = `Non Valide`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    }
-};
-
-//--Validation Nom
-const validNom = function(inputNom) {
-
-    let nomRegExp = new RegExp('^[a-zA-ZÀ-ú\-\s]*', 'g');
-    let small = inputNom.nextElementSibling;
-
-    if (inputNom.value == "" || inputNom.value.length < 3) {
-        small.innerHTML = `Requis : 3 caractères minimum !`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    } else if (nomRegExp.test(inputNom.value)) {
-        small.innerHTML = `Valide`;
-        small.classList.remove('text-danger');
-        small.classList.add('text-success');
-        return true;
-    } else {
-        small.innerHTML = `Non Valide`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    }
-};
-
-//--Validation Adresse
-const validAdresse = function(inputAdresse) {
-
-    let adresseRegExp = new RegExp('^[a-zA-ZÀ-ú\-\s]*', 'g');
-    let small = inputAdresse.nextElementSibling;
-
-    if (inputAdresse.value == "" || inputAdresse.value.length < 8) {
-        small.innerHTML = `Requis : 8 caractères minimum !`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    } else if (adresseRegExp.test(inputAdresse.value)) {
-        small.innerHTML = `Adresse Valide`;
-        small.classList.remove('text-danger');
-        small.classList.add('text-success');
-        return true;
-    } else {
-        small.innerHTML = `Non Valide`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    }
-};
-
-//--Validation Ville
-const validVille = function(inputVille) {
-
-    let villeRegExp = new RegExp('^[a-zA-ZÀ-ú\-\s]*', 'g');
-    let small = inputVille.nextElementSibling;
-
-    if (inputVille.value == "" || inputVille.value.length == 0) {
-        small.innerHTML = `Veuillez renseigner votre ville !`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    } else if (villeRegExp.test(inputVille.value)) {
-        small.innerHTML = `Valide`;
-        small.classList.remove('text-danger');
-        small.classList.add('text-success');
-        return true;
-    } else {
-        small.innerHTML = `Non Valide`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    }
-};
-
-//--Validation Email
-const validEmail = function(inputEmail) {
-
-    let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
-    let small = inputEmail.nextElementSibling;
-
-    if (emailRegExp.test(inputEmail.value)) {
-        small.innerHTML = `Valide`;
-        small.classList.remove('text-danger');
-        small.classList.add('text-success');
-        return true;
-    } else {
-        small.innerHTML = `Veuillez entrer un format d'email valide !`;
-        small.classList.remove('text-success');
-        small.classList.add('text-danger');
-        return false;
-    }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-/* comment enregistrer un tableau d’is dans le localStorage ???
-L'info est donnée dans le backend enfin une partie.
-Dans le fichier controllers, moi j'ai pris les ours,
-tu trouveras de les lignes 39 à 46 sur les 3 fichiers.
-Tu dois faire un setItem stringify pour le transformer en chaîne de caractère.
-Et pour le récupérer tu le parse */
-
-
-
-
-
-
-/**
- *
- * Expects request to contain:
- * contact: {
- *   firstName: string,
- *   lastName: string,
- *   address: string,
- *   city: string,
- *   email: string
- * }
- * products: [string] <-- array of product _id
- *
- * regex pour le formulaire
- */
-
-
-//console.log des produits à commander ! boucle while
+function supprimerItem(_id) {
+    console.log(_id);
+    localStorage.removeItem(_id);
+    document.location.href = 'panier.html';
+}
