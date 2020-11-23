@@ -1,12 +1,11 @@
-const god = document.getElementById('productDetail');
-
-//const apiURL = "http://localhost:3000/api/teddies/";
-
+const intHtml = document.getElementById('productDetail');
 const params = new URLSearchParams(window.location.search);
+//--const apiURL = "http://localhost:3000/api/teddies/";
 
 console.log(params);
 
-fetch(`http://localhost:3000/api/teddies/${params.get('id')}`) //je met l'id du produit clické dans le fetch
+//--je met l'id du produit clické dans le fetch
+fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
     .then(response => {
         if (response.ok) {
             return response.json()
@@ -15,17 +14,19 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`) //je met l'id du 
         }
     })
     .then(data => {
-        //--suppression de la boucle
+
         //--variable prix pour le diviser par 100
         let priceProdUnit = data.price / 100;
+
         //--variable vide + boucle pour créer le select qui accueil
         let color = "";
+
         data.colors.forEach(couleur => {
             color += `<option value="${couleur}">${couleur}</option>`;
         });
 
-        //--Ecriture du HTML en dynamique
-        god.innerHTML += `
+
+        intHtml.innerHTML += `
                <div class="lg:w-4/5 mx-auto flex flex-wrap">
             <img alt="${data.name}" class="lg:w-1/2 w-full object-cover cursor-pointer object-center rounded border border-gray-200" src="${data.imageUrl}">
             <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -117,23 +118,72 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`) //je met l'id du 
             let colorElm = document.getElementById('inlineFormCustomSelect');
             let quantityElm = document.getElementById('inputQuantite');
 
-            let toAddTab = {
+            let objetTabb = {
                 idProd: data._id,
                 image: data.imageUrl,
                 name: data.name,
                 colors: colorElm.value,
                 quantite: quantityElm.value,
-                totalPrice: (data.price * parseInt(quantityElm.value)) / 100,
+                //totalPrice: (data.price * parseInt(quantityElm.value)) / 100,
                 price: data.price / 100
             };
 
-            let key = data._id;
-
-            localStorage[key] = JSON.stringify(toAddTab);
-
+            //--ajout dans le localStorage
+            let basket = localStorage.getItem('basket');
+            let basketFull
+            if (basket === null){
+                basketFull = [objetTabb];
+            }
+            else {
+                basketFull = JSON.parse(basket);
+                const found = basketFull.find(element => element.idProd == objetTabb.idProd && element.colors == objetTabb.colors);
+                console.log(found);
+                if (found === undefined) {
+                    basketFull.push(objetTabb);
+                }
+                else {
+                    found.quantite = Number(found.quantite) + Number(quantityElm.value)
+                }
+                // trouver la bonne ligne et ajoute 1 à la quantitée
+            }
+            console.log(basketFull);
+            localStorage.setItem('basket', JSON.stringify(basketFull));
             window.location.href = 'panier.html';
-        }
 
+
+            /*
+                1. verifier que basketfull est un tebleau et si pas le cas creer en un ! (typeof())
+                2. utiliser basketfull.find() pour trouver l'id
+                3. si il existe on augmente sa quantite
+                    sinon basketFull.push objectTab
+                4. re sauvergarder basketFull dans le local storage
+             */
+
+           /* console.log(typeof basketFull);
+            return
+            //--si je n'ai pas de panier je dois dire que c'est un tableau mais sinon j'ajoute tout pareil
+            if (typeof basketFull != 'Array') {
+                basketFull = [];
+                basketFull.push(objetTabb);
+                localStorage.setItem('basket', JSON.stringify(basketFull));
+                window.location.href = 'panier.html';
+
+                // sinon si j'ai un panier...
+            } else if (!basketFull.some(p => p._id === objetTabb._id)) {
+
+                // je vérifie que je n'ai pas déjà mon objet dans le panier avant d'ajouter
+                basketFull.push(objetTabb);
+                localStorage.setItem("basket", JSON.stringify(basketFull));
+
+                // sinon je l'ai déjà dans le panier alors j'enlève le précédent produit pour ajouter le nouveau avec la nouvelle quantité
+            } else {
+                const newBasket = basketFull.filter(p => p._id !== objetTabb._id)
+                newBasket.push(objetTabb);
+                localStorage.setItem("basket", JSON.stringify(newBasket));
+            }
+            window.location.href = 'panier.html';
+        */
+        }
     });
 
 
@@ -145,13 +195,3 @@ function calculePrice(priceProdUnit) {
         result.textContent = `${priceProdUnit}` * `${event.target.value}`;
     });
 }
-
-
-// if (localStorage.pushTabb) {
-//     const tab = JSON.parse(localStorage.pushTabb);
-//     tab.push(toAddTabb);
-//     localStorage.setItem('pushTabb', JSON.stringify(tab));
-// } else {
-//     tabbLs.push(toAddTabb);
-//     localStorage.setItem('pushTabb', JSON.stringify(tabbLs));
-// };

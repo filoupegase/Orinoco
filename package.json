@@ -7,19 +7,21 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "sass": "sass --watch ./sass/main.scss:./css/style.css -w --style compressed",
     "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/",
-    "build": "npx tailwindcss build css/styles.css -o dist/output.css"
+    "build": "npx tailwindcss build css/styles.css -o dist/global.css"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^10.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "jquery": "^3.5.1",
     "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.3.8",
+    "mongoose": "^5.10.15",
     "mongoose-unique-validator": "^2.0.2",
-    "tailwindcss": "^1.8.10",
+    "postcss": "^8.1.8",
+    "tailwindcss": "^2.0.1",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

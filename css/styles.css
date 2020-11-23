@@ -1,5 +1,7 @@
 @tailwind base;
+
 @tailwind components;
+
 @tailwind utilities;
 
 .parent {
@@ -8,10 +10,18 @@
 .parent:hover > .child {
     transform: scale(1.13);
 }
-
 .animation {
     transition: transform 470ms;
 }
 .animation:hover {
     transform: scale(1.13);
+}
+.header_navbar {
+    background-color: #fff;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .1), 0 2px 3px 0 rgba(0, 0, 0, .1);
+    position: fixed;
+    padding: 22px 85px;
+    align-items: center;
+    z-index: 50;
+    width: 100%;
 }
