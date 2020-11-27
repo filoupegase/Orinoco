@@ -36,11 +36,62 @@ if (localStorage.length === 0) {
 //-- fonction de suppression d'un produit
 function deleteItem(_id) {
     let supprItem = JSON.parse(localStorage.getItem("basket"));
-    //console.log(supprItem);
     const item = supprItem.find(item => item.idProd == _id)
     const index = supprItem.indexOf(item);
     supprItem.splice(index, 1);
-    //supprItem.filter(_id, "basket");
     localStorage.setItem("basket", JSON.stringify(supprItem));
+    alert('Vous avez supprimé ' + item.name + ' de votre panier ! ')
     document.location.href = 'panier.html';
 }
+
+// ------------FORMULAIRE--------------
+
+let firstName = document.getElementById('nom').value;
+let lastName = document.getElementById('prenom').value;
+let courriel = document.getElementById('courriel').value;
+
+//--- met les valeurs dans un objet pour la requete POST
+let contact = {
+    "nom": firstName,
+    "prenom": lastName,
+    "courriel": courriel,
+};
+
+// création de l'objet obligatoire pour la requete à envoyer au serveur
+let objt = {
+    contact,
+};
+
+let achat = JSON.stringify(objt);
+console.log(achat);
+
+var pseudoElt = document.getElementById("nom");
+//pseudoElt.value = "MonPseudo";
+// Auto focus
+pseudoElt.focus();
+
+// Contrôle du courriel
+document.getElementById("nom")
+    .addEventListener("blur", function (e) {
+        var regexCourriel = /^[a-zA-Z ,.'-]+$/;
+        nom = e.target.value;
+        if (!regexCourriel.test(e.target.value) || nom.length >= 2) {
+            var validiteCourriel = "erreur : minimum 2 carractère";
+        }
+        document.getElementById("aideNom").textContent = validiteCourriel;
+    });
+
+
+// Contrôle du courriel
+document.getElementById("courriel")
+    .addEventListener("blur", function (e) {
+        var regexCourriel = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!regexCourriel.test(e.target.value)) {
+            var validiteCourriel = "Adresse mail invalide";
+        }
+        document.getElementById("aideCourriel").textContent = validiteCourriel;
+    });
+
+
+///^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/ <- classic regex input
+

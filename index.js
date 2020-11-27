@@ -48,23 +48,9 @@ fetch(apiURL)
                 ${data.description}
             </p>
         </form>
-    </div>
-            <!--<a href="detail.html?id=${data._id}">
-            <div class="max-w-sm parent rounded overflow-hidden shadow-lg bg-white cursor-pointer">
-            <img class="w-full parent child" src="${data.imageUrl}" alt="${data.name}">
-            <div class="px-6 py-4">
-                <div class="font-bold text-2xl mb-2">${data.name}</div>
-                <div class="text-lg mb-2">${priceProd.toFixed(2)} €</div>
-                <p class="text-gray-700 text-base">${data.description}</p>
-            </div>
-            <div class="px-6 pt-4 pb-2">
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Teddies</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Pink</span>
-                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Orinoco</span>
-            </div>
-        </div>
-        </a>-->
-`
-            console.log(data);
+    </div>`
+            //console.log(data);
         })
-    }).catch(error => alert("Erreur : " + error));
+    }).catch(error => {
+    return alert("Erreur : " + error)
+});
