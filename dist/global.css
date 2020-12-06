@@ -31187,11 +31187,21 @@ video {
   background-color: #fff;
   box-shadow: 0 5px 15px 0 rgba(0, 0, 0, .1), 0 2px 3px 0 rgba(0, 0, 0, .1);
   position: fixed;
-  padding: 22px 85px;
+  padding: 14px 90px;
   align-items: center;
   z-index: 50;
   width: 100%;
 }
+
+.padd-container {
+  padding-top: 8rem;
+  padding-right: 8rem;
+}
+
+/*
+input:invalid {
+    background-color: red;
+}*/
 
 @media (min-width: 640px) {
   .sm\:container {

@@ -23,7 +23,7 @@ data.forEach(data => {
     }
 );
 
-totalPrice.innerHTML = `<p>${total}</p>`;
+totalPrice.innerHTML = total == 0 ? "" : total;
 
 if (localStorage.length === 0) {
     inHtml.innerHTML =
@@ -46,52 +46,147 @@ function deleteItem(_id) {
 
 // ------------FORMULAIRE--------------
 
-let firstName = document.getElementById('nom').value;
-let lastName = document.getElementById('prenom').value;
-let courriel = document.getElementById('courriel').value;
+//let firstName = document.getElementById('nom').value;
+//let lastName = document.getElementById('prenom').value;
+//let courriel = document.getElementById('courriel').value;
 
 //--- met les valeurs dans un objet pour la requete POST
-let contact = {
-    "nom": firstName,
-    "prenom": lastName,
-    "courriel": courriel,
-};
+//let contact = {
+//  "nom": firstName,
+//"prenom": lastName,
+//"courriel": courriel,
+//};
 
 // création de l'objet obligatoire pour la requete à envoyer au serveur
-let objt = {
-    contact,
-};
+//let objt = {
+//  contact,
+//};
 
-let achat = JSON.stringify(objt);
-console.log(achat);
+//let achat = JSON.stringify(objt);
+//console.log(achat);
+// auto focus
 
-var pseudoElt = document.getElementById("nom");
-//pseudoElt.value = "MonPseudo";
-// Auto focus
-pseudoElt.focus();
+//allInputs[0].focus();
+
+//document.getElementById("aideNom").textContent = "erreurNom";
+
+
+document.forms["form"].addEventListener("submit", function (e) {
+    e.preventDefault(); // <- (e) gérer le comportement du formulaire
+    var erreur;
+    var allInputs = this;
+
+    // Traitement générique pour le cas ou la totalité des champs serait vide
+    for (var i = 0; i < allInputs.length; i++) {
+        if (!allInputs[i].value) {
+            erreur = "Veuillez renseigner tous les champs";
+            break;
+        }
+        if (!allInputs[i].checkValidity()) {
+            erreur += "champs" + i + "incorrect";
+        }
+    }
+
+    let nomRegExp = new RegExp("^[a-zA-ZÀ-ú-s]+$");
+    let erreurNom;
+    if (!nomRegExp.test(allInputs["nom"].value)) {
+        erreurNom = "erreur sur le nom";
+        document.getElementById("aideNom").textContent = erreurNom;
+        return false;
+    }
+    //document.getElementById("aideNom").textContent = erreurNom;
+    //required minlength="2" maxlength="21"
+
+    let preRegExp = new RegExp("^[a-zA-ZÀ-ú-s]+$");
+    let erreurPre;
+    if (!preRegExp.test(allInputs["prenom"].value)) {
+        erreurPre = "erreur sur le prénom";
+        document.getElementById("aidePrenom").textContent = erreurPre;
+        return false;
+    }
+
+    let mailRegExp = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
+    let erreurMail;
+    if (!mailRegExp.test(allInputs["email"].value)) {
+        erreurMail = "erreur sur le mail";
+        document.getElementById("aideCourriel").textContent = erreurMail;
+        return false;
+    }
+
+    if (allInputs.checkValidity() === true) {
+        alert('formulaire envoyé !');
+        e.preventDefault();
+    }
+})
+
+//document.getElementById("post_form")
+  //  .addEventListener("click", function (e) {
+        //e.preventDefault();
+    //    const form = document.getElementById("form");
+      //  console.log(form.checkValidity());
+    //});
+
+//document.getElementById("post_form")
+//  .addEventListener("click", function (e) {
+//    e.preventDefault();
+//  const form = document.getElementById("nom");
+//console.log(form.checkValidity());
+//console.log("nom");
+//});
+
+
+//laaaaaaaaaaa
+//document.getElementById("nom").addEventListener("blur", function (e) {
+//  var regexCourriel = /^[a-zA-ZÀ-ú-s]*/;
+//nom = e.target.value;
+//if (!regexCourriel.test(e.target.value) && nom.length < 2) {
+//  var validiteCourriel = "erreur !";
+//}
+//document.getElementById("aideNom").textContent = validiteCourriel;
+//});
+
+//document.getElementById("post_form")
+//  .addEventListener("click", function (e) {
+//    e.preventDefault();
+//  const form = document.getElementById("nom");
+//console.log(form.checkValidity());
+//console.log("nom");
+//});
+
+
+//document.getElementById("nom")
+//  .addEventListener("blur", function (e) {
+//    var regexCourriel = /^[a-zA-Z ,.'-]+$/;
+//  nom = e.target.value;
+//if (!regexCourriel.test(e.target.value)) {
+//  var validiteCourriel = "erreur !";
+//}
+//document.getElementById("aideNom").textContent = validiteCourriel;
+//});
+
+//document.getElementById("prenom")
+//  .addEventListener("blur", function (e) {
+//    var regexCourriel = /^[a-zA-Z ,.'-]+$/;
+//  nom = e.target.value;
+//if (!regexCourriel.test(e.target.value)) {
+//  var validiteCourriel = "erreur !";
+//}
+//document.getElementById("aidePrenom").textContent = validiteCourriel;
+//});
 
 // Contrôle du courriel
-document.getElementById("nom")
-    .addEventListener("blur", function (e) {
-        var regexCourriel = /^[a-zA-Z ,.'-]+$/;
-        nom = e.target.value;
-        if (!regexCourriel.test(e.target.value) || nom.length >= 2) {
-            var validiteCourriel = "erreur : minimum 2 carractère";
-        }
-        document.getElementById("aideNom").textContent = validiteCourriel;
-    });
+//document.getElementById("courriel")
+//  .addEventListener("blur", function (e) {
+//    var regexCourriel = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+//  if (!regexCourriel.test(e.target.value)) {
+//    var validiteCourriel = "Adresse mail invalide";
+//}
+//document.getElementById("aideCourriel").textContent = validiteCourriel;
+//});
 
-
-// Contrôle du courriel
-document.getElementById("courriel")
-    .addEventListener("blur", function (e) {
-        var regexCourriel = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        if (!regexCourriel.test(e.target.value)) {
-            var validiteCourriel = "Adresse mail invalide";
-        }
-        document.getElementById("aideCourriel").textContent = validiteCourriel;
-    });
-
-
-///^(([A-Za-z]+[\-\']?)*([A-Za-z]+)?\s)+([A-Za-z]+[\-\']?)*([A-Za-z]+)?$/ <- classic regex input
-
+//document.getElementById("post_form")
+//  .addEventListener("click", function (e) {
+//    e.preventDefault();
+//  const form = document.getElementById("nom");
+//console.log(form.checkValidity())
+//});

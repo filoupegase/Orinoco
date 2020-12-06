@@ -17,12 +17,12 @@ fetch(apiURL)
 
             god.innerHTML += `
   <a href="detail.html?id=${data._id}">
-    <div class="transform hover:-rotate-3 flex p-6 h-auto parent shadow-lg overflow-hidden bg-white cursor-pointer rounded">
+    <div class="transform hover:-rotate-2 flex p-6 h-auto parent shadow-lg overflow-hidden bg-white cursor-pointer rounded">
         <div class="flex-none relative parent child" style="width: 10rem;">
             <img src="${data.imageUrl}" alt="${data.name}" class="absolute inset-0 w-full h-full object-cover rounded-lg" />
         </div>
         <form class="flex-auto pl-6">
-            <div class="flex flex-wrap items-baseline mb-5">
+            <div class=" text-lg flex flex-wrap items-baseline mb-4">
                 <h1 style="font-family: 'Nunito', sans-serif;" class="w-full flex-none font-semibold mb-2.5">
                    ${data.name}
                 </h1>
@@ -38,7 +38,7 @@ fetch(apiURL)
                     <button class="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" type="submit">Buy now</button>
                     <button class="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
                 </div>
-                <button class="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700" type="button" aria-label="like">
+                <button class="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700 hover:text-purple-500" type="button" aria-label="like">
                     <svg width="20" height="20" fill="currentColor">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" />
                     </svg>

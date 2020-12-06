@@ -34,19 +34,19 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                 <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">${data.name}</h1>
                 <div class="flex mb-4">
           <span class="flex items-center">
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
             </svg>
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
             </svg>
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
             </svg>
-            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
             </svg>
-            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-red-500" viewBox="0 0 24 24">
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-yellow-500" viewBox="0 0 24 24">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
             </svg>
             <span class="text-gray-600 ml-3">4 Reviews</span>
@@ -73,12 +73,12 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                 <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">         
                  <div class="flex items-center">
                  <label class="mr-3" for="QuantiteProduit">Quantité</label>
-                   <input id="inputQuantite" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-3" type="number" min="1" value="1"/>
+                   <input id="inputQuantite" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-purple-700 text-base pl-3 pr-3" type="number" min="1" value="1"/>
                     </div>
           <div class="flex ml-6 items-center">
                         <span class="mr-3">Colors</span>
                         <div class="relative">
-                            <select id="inlineFormCustomSelect" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10">
+                            <select id="inlineFormCustomSelect" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-purple-700 text-base pl-3 pr-10">
                                 ${color}
                             </select>
                             <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
@@ -91,8 +91,8 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                 </div>
                 <div class="flex">
                     <p class="title-font font-medium text-2xl text-gray-900"><span id="totalPrice" class="title-font font-medium text-2xl text-gray-900">${priceProdUnit.toFixed(2)}</span> €</p>
-                    <button id="btnAjoutId" type="button" class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded">Ajouter au panier</button>
-                    <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                    <button id="btnAjoutId" type="button" class="flex ml-auto text-white bg-purple-700 border-0 py-2 px-6 focus:outline-none hover:bg-purple-500 rounded">Ajouter au panier</button>
+                    <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-purple-700 ml-4">
                         <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
                             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                         </svg>
@@ -106,7 +106,6 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
 
         //--On écoute le petit bouton, mais tu ne sais pas cliquer !
         const btnAjout = document.getElementById('btnAjoutId');
-
         btnAjout.addEventListener('click', function () {
             ajoutLocalStor()
         });
@@ -131,17 +130,15 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
             //--ajout dans le localStorage
             let basket = localStorage.getItem('basket');
             let basketFull
-            if (basket === null){
+            if (basket === null) {
                 basketFull = [objetTabb];
-            }
-            else {
+            } else {
                 basketFull = JSON.parse(basket);
                 const found = basketFull.find(element => element.idProd == objetTabb.idProd && element.colors == objetTabb.colors);
                 console.log(found);
                 if (found === undefined) {
                     basketFull.push(objetTabb);
-                }
-                else {
+                } else {
                     found.quantite = Number(found.quantite) + Number(quantityElm.value)
                 }
                 // trouver la bonne ligne et ajoute 1 à la quantitée
@@ -149,8 +146,6 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
             console.log(basketFull);
             localStorage.setItem('basket', JSON.stringify(basketFull));
             window.location.href = 'panier.html';
-
-
             /*
                 1. verifier que basketfull est un tebleau et si pas le cas creer en un ! (typeof())
                 2. utiliser basketfull.find() pour trouver l'id
@@ -158,35 +153,8 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                     sinon basketFull.push objectTab
                 4. re sauvergarder basketFull dans le local storage
              */
-
-           /* console.log(typeof basketFull);
-            return
-            //--si je n'ai pas de panier je dois dire que c'est un tableau mais sinon j'ajoute tout pareil
-            if (typeof basketFull != 'Array') {
-                basketFull = [];
-                basketFull.push(objetTabb);
-                localStorage.setItem('basket', JSON.stringify(basketFull));
-                window.location.href = 'panier.html';
-
-                // sinon si j'ai un panier...
-            } else if (!basketFull.some(p => p._id === objetTabb._id)) {
-
-                // je vérifie que je n'ai pas déjà mon objet dans le panier avant d'ajouter
-                basketFull.push(objetTabb);
-                localStorage.setItem("basket", JSON.stringify(basketFull));
-
-                // sinon je l'ai déjà dans le panier alors j'enlève le précédent produit pour ajouter le nouveau avec la nouvelle quantité
-            } else {
-                const newBasket = basketFull.filter(p => p._id !== objetTabb._id)
-                newBasket.push(objetTabb);
-                localStorage.setItem("basket", JSON.stringify(newBasket));
-            }
-            window.location.href = 'panier.html';
-        */
         }
-    });
-
-
+    })
 //---Fonction qui calcule le prix total sur la page Produit
 function calculePrice(priceProdUnit) {
     let quantites = document.getElementById('inputQuantite');
