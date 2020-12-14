@@ -1,9 +1,6 @@
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
-
 .parent {
     transition: transform 600ms;
 }
@@ -28,7 +25,7 @@
 
 .padd-container {
    padding-top: 8rem;
-    padding-right: 8rem;
+    padding-bottom: 8rem;
 }
 
 /*

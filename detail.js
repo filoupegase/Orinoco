@@ -90,7 +90,7 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                     </div>
                 </div>
                 <div class="flex">
-                    <p class="title-font font-medium text-2xl text-gray-900"><span id="totalPrice" class="title-font font-medium text-2xl text-gray-900">${priceProdUnit.toFixed(2)}</span> €</p>
+                    <p class="text-4xl font-bold text-2xl"><span id="totalPrice" class="title-font font-bold text-4xl">${priceProdUnit.toFixed(2)}</span> €</p>
                     <button id="btnAjoutId" type="button" class="flex ml-auto text-white bg-purple-700 border-0 py-2 px-6 focus:outline-none hover:bg-purple-500 rounded">Ajouter au panier</button>
                     <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-purple-700 ml-4">
                         <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">

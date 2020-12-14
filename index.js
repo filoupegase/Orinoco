@@ -4,11 +4,7 @@ const jsonURL = "./teddy.json";
 
 fetch(apiURL)
     .then(response => {
-        if (response.ok) {
-            return response.json()
-        } else {
-            Promise.reject(response.status);
-        }
+        return response.json()
     })
     .then(data => {
         data.forEach(data => {
@@ -18,7 +14,7 @@ fetch(apiURL)
             god.innerHTML += `
   <a href="detail.html?id=${data._id}">
     <div class="transform hover:-rotate-2 flex p-6 h-auto parent shadow-lg overflow-hidden bg-white cursor-pointer rounded">
-        <div class="flex-none relative parent child" style="width: 10rem;">
+        <div class="flex-none relative parent child w-40">
             <img src="${data.imageUrl}" alt="${data.name}" class="absolute inset-0 w-full h-full object-cover rounded-lg" />
         </div>
         <form class="flex-auto pl-6">
@@ -35,8 +31,8 @@ fetch(apiURL)
             </div>
             <div class="flex space-x-3 mb-4 text-sm font-semibold">
                 <div class="flex-auto flex space-x-3">
-                    <button class="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" type="submit">Buy now</button>
-                    <button class="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" type="button">Add to bag</button>
+                    <button class="w-1/2 flex items-center justify-center rounded-full bg-purple-700 text-white" href="detail.html?id=${data._id}" type="button">Buy now</button>
+                    <button class="w-1/2 flex items-center justify-center rounded-full bg-purple-50 text-purple-700" href="detail.html?id=${data._id}" type="button">Add to bag</button>
                 </div>
                 <button class="flex-none flex items-center justify-center w-9 h-9 rounded-full bg-purple-50 text-purple-700 hover:text-purple-500" type="button" aria-label="like">
                     <svg width="20" height="20" fill="currentColor">
@@ -49,7 +45,7 @@ fetch(apiURL)
             </p>
         </form>
     </div>`
-            //console.log(data);
+            console.log(data);
         })
     }).catch(error => {
     return alert("Erreur : " + error)

@@ -1,5 +1,6 @@
 const inHtml = document.getElementById('main');
 const totalPrice = document.getElementById('toto');
+//const { v4: uuidv4 } = require('uuid');
 
 let data = JSON.parse(localStorage.getItem('basket'));
 let total = 0;
@@ -45,32 +46,6 @@ function deleteItem(_id) {
 }
 
 // ------------FORMULAIRE--------------
-
-//let firstName = document.getElementById('nom').value;
-//let lastName = document.getElementById('prenom').value;
-//let courriel = document.getElementById('courriel').value;
-
-//--- met les valeurs dans un objet pour la requete POST
-//let contact = {
-//  "nom": firstName,
-//"prenom": lastName,
-//"courriel": courriel,
-//};
-
-// création de l'objet obligatoire pour la requete à envoyer au serveur
-//let objt = {
-//  contact,
-//};
-
-//let achat = JSON.stringify(objt);
-//console.log(achat);
-// auto focus
-
-//allInputs[0].focus();
-
-//document.getElementById("aideNom").textContent = "erreurNom";
-
-
 document.forms["form"].addEventListener("submit", function (e) {
     e.preventDefault(); // <- (e) gérer le comportement du formulaire
     var erreur;
@@ -89,104 +64,82 @@ document.forms["form"].addEventListener("submit", function (e) {
 
     let nomRegExp = new RegExp("^[a-zA-ZÀ-ú-s]+$");
     let erreurNom;
+    document.getElementById("aideNom").textContent = "";
     if (!nomRegExp.test(allInputs["nom"].value)) {
         erreurNom = "erreur sur le nom";
         document.getElementById("aideNom").textContent = erreurNom;
         return false;
     }
-    //document.getElementById("aideNom").textContent = erreurNom;
-    //required minlength="2" maxlength="21"
 
     let preRegExp = new RegExp("^[a-zA-ZÀ-ú-s]+$");
     let erreurPre;
+    document.getElementById("aidePrenom").textContent = "";
     if (!preRegExp.test(allInputs["prenom"].value)) {
         erreurPre = "erreur sur le prénom";
         document.getElementById("aidePrenom").textContent = erreurPre;
         return false;
     }
 
+    let adrRegExp = new RegExp("^[a-zA-ZÀ-ú-s0-9_ ]+$");
+    let erreurAdr;
+    document.getElementById("aideAdresse").textContent = "";
+    if (!adrRegExp.test(allInputs["adresse"].value)) {
+        erreurAdr = "erreur sur l'adresse";
+        document.getElementById("aideAdresse").textContent = erreurAdr;
+        return false;
+    }
+
+    let codRegExp = new RegExp("^(([0-8][0-9])|(9[0-5])|(2[ab]))[0-9]{3}$");
+    let erreurCod;
+    document.getElementById("aidePostCode").textContent = "";
+    if (!codRegExp.test(allInputs["postCode"].value)) {
+        erreurCod = "erreur sur le code postal";
+        document.getElementById("aidePostCode").textContent = erreurCod;
+        return false;
+    }
+
     let mailRegExp = new RegExp("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$");
     let erreurMail;
+    document.getElementById("aideCourriel").textContent = "";
     if (!mailRegExp.test(allInputs["email"].value)) {
         erreurMail = "erreur sur le mail";
         document.getElementById("aideCourriel").textContent = erreurMail;
         return false;
     }
 
-    if (allInputs.checkValidity() === true) {
-        alert('formulaire envoyé !');
-        e.preventDefault();
+    const ids = [];
+    for (const product of data) {
+        ids.push(product.idProd)
     }
-})
-
-//document.getElementById("post_form")
-  //  .addEventListener("click", function (e) {
-        //e.preventDefault();
-    //    const form = document.getElementById("form");
-      //  console.log(form.checkValidity());
-    //});
-
-//document.getElementById("post_form")
-//  .addEventListener("click", function (e) {
-//    e.preventDefault();
-//  const form = document.getElementById("nom");
-//console.log(form.checkValidity());
-//console.log("nom");
-//});
+    //console.log(ids);
+    const user = {
+        lastName: allInputs["nom"].value,
+        firstName: allInputs["prenom"].value,
+        address: allInputs["adresse"].value,
+        city: allInputs["postCode"].value,
+        email: allInputs["email"].value
+    };
+    //console.log(user);
 
 
-//laaaaaaaaaaa
-//document.getElementById("nom").addEventListener("blur", function (e) {
-//  var regexCourriel = /^[a-zA-ZÀ-ú-s]*/;
-//nom = e.target.value;
-//if (!regexCourriel.test(e.target.value) && nom.length < 2) {
-//  var validiteCourriel = "erreur !";
-//}
-//document.getElementById("aideNom").textContent = validiteCourriel;
-//});
+    const donnees = {products: ids, contact:user};
+    console.log(donnees);
 
-//document.getElementById("post_form")
-//  .addEventListener("click", function (e) {
-//    e.preventDefault();
-//  const form = document.getElementById("nom");
-//console.log(form.checkValidity());
-//console.log("nom");
-//});
+    const options = {
+        method: "POST",
+        body: JSON.stringify(donnees),
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
+    //console.log(options);
 
-
-//document.getElementById("nom")
-//  .addEventListener("blur", function (e) {
-//    var regexCourriel = /^[a-zA-Z ,.'-]+$/;
-//  nom = e.target.value;
-//if (!regexCourriel.test(e.target.value)) {
-//  var validiteCourriel = "erreur !";
-//}
-//document.getElementById("aideNom").textContent = validiteCourriel;
-//});
-
-//document.getElementById("prenom")
-//  .addEventListener("blur", function (e) {
-//    var regexCourriel = /^[a-zA-Z ,.'-]+$/;
-//  nom = e.target.value;
-//if (!regexCourriel.test(e.target.value)) {
-//  var validiteCourriel = "erreur !";
-//}
-//document.getElementById("aidePrenom").textContent = validiteCourriel;
-//});
-
-// Contrôle du courriel
-//document.getElementById("courriel")
-//  .addEventListener("blur", function (e) {
-//    var regexCourriel = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-//  if (!regexCourriel.test(e.target.value)) {
-//    var validiteCourriel = "Adresse mail invalide";
-//}
-//document.getElementById("aideCourriel").textContent = validiteCourriel;
-//});
-
-//document.getElementById("post_form")
-//  .addEventListener("click", function (e) {
-//    e.preventDefault();
-//  const form = document.getElementById("nom");
-//console.log(form.checkValidity())
-//});
+    fetch("http://localhost:3000/api/teddies/order", options)
+        .then((response) => {
+            return response.json();
+        }).then(function (order) {
+        window.location.href = `contact.html?ncomm=${order.orderId}`;
+    }).catch(error => {
+        return alert("Erreur : " + error)
+    });
+});

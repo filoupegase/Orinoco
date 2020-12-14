@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "autoprefixer": "^10.0.2",
+    "autoprefixer": "^10.0.4",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
@@ -20,12 +20,18 @@
     "jsonwebtoken": "^8.3.0",
     "mongoose": "^5.10.15",
     "mongoose-unique-validator": "^2.0.2",
-    "postcss": "^8.1.8",
+    "postcss-csso": "^5.0.0",
+    "postcss-fixes": "^2.0.1",
     "tailwindcss": "^2.0.1",
-    "uuid": "^3.3.2"
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
+    "css-loader": "^5.0.1",
+    "postcss": "^8.2.0",
+    "postcss-loader": "^4.1.0",
+    "style-loader": "^2.0.0",
     "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
   }
 }
