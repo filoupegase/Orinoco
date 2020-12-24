@@ -104,12 +104,12 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
         //--variables qui récupère les fonctions d'écoute pour le prix total
         let functionPrice = calculePrice(priceProdUnit);
 
-        //--On écoute le petit bouton, mais tu ne sais pas cliquer !
+        //--On écoute le petit bouton
         const btnAjout = document.getElementById('btnAjoutId');
+
         btnAjout.addEventListener('click', function () {
             ajoutLocalStor()
         });
-
 
         //---on catch les données voulues et on stocke dans un objet
         function ajoutLocalStor() {

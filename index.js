@@ -1,8 +1,24 @@
 const god = document.getElementById('teddysCard'); //récupération id=main
 const apiURL = "http://localhost:3000/api/teddies";
 const jsonURL = "./teddy.json";
+var myHeaders = new Headers();
 
-fetch(apiURL)
+//Objet init qui permet de contrôler un certain nombre de réglages
+var myInit = {
+    method: 'GET',
+    headers: myHeaders,
+    mode: 'cors',
+    cache: 'default'
+};
+
+//function async getdata{
+  //  let response = await fetch(apiURL, myInit);
+    //let data = await response.json();
+    //data.forEach(data => {
+      //  let priceProd = data.price / 100;
+    //}
+
+fetch(apiURL, myInit)
     .then(response => {
         return response.json()
     })
