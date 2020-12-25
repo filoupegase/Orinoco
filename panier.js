@@ -127,7 +127,6 @@ document.forms["form"].addEventListener("submit", function (e) {
         }
     }
 
-
     let nomRegExp = new RegExp("^[a-zA-ZÀ-ú-s]+$");
     let erreurNom;
     document.getElementById("aideNom").textContent = "";
@@ -189,7 +188,7 @@ document.forms["form"].addEventListener("submit", function (e) {
 
 
     const donnees = {products: ids, contact: user};
-    console.log(donnees);
+    //console.log(donnees);
 
     const options = {
         method: "POST",

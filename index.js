@@ -1,24 +1,8 @@
 const god = document.getElementById('teddysCard'); //récupération id=main
 const apiURL = "http://localhost:3000/api/teddies";
 const jsonURL = "./teddy.json";
-var myHeaders = new Headers();
 
-//Objet init qui permet de contrôler un certain nombre de réglages
-var myInit = {
-    method: 'GET',
-    headers: myHeaders,
-    mode: 'cors',
-    cache: 'default'
-};
-
-//function async getdata{
-  //  let response = await fetch(apiURL, myInit);
-    //let data = await response.json();
-    //data.forEach(data => {
-      //  let priceProd = data.price / 100;
-    //}
-
-fetch(apiURL, myInit)
+fetch(apiURL)
     .then(response => {
         return response.json()
     })
@@ -27,7 +11,7 @@ fetch(apiURL, myInit)
 
             let priceProd = data.price / 100;
 
-            god.innerHTML += `
+            god.innerHTML +=`
   <a href="detail.html?id=${data._id}">
     <div class="transform hover:-rotate-2 flex p-6 h-auto parent shadow-lg overflow-hidden bg-white cursor-pointer rounded">
         <div class="flex-none relative parent child w-40">

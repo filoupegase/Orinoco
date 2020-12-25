@@ -123,7 +123,6 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                 name: data.name,
                 colors: colorElm.value,
                 quantite: quantityElm.value,
-                //totalPrice: (data.price * parseInt(quantityElm.value)) / 100,
                 price: data.price / 100
             };
 
@@ -141,23 +140,17 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                 } else {
                     found.quantite = Number(found.quantite) + Number(quantityElm.value)
                 }
-                // trouver la bonne ligne et ajoute 1 à la quantitée
             }
             console.log(basketFull);
             localStorage.setItem('basket', JSON.stringify(basketFull));
             window.location.href = 'panier.html';
-            /*
-                1. verifier que basketfull est un tebleau et si pas le cas creer en un ! (typeof())
-                2. utiliser basketfull.find() pour trouver l'id
-                3. si il existe on augmente sa quantite
-                    sinon basketFull.push objectTab
-                4. re sauvergarder basketFull dans le local storage
-             */
         }
     })
+
 //---Fonction qui calcule le prix total sur la page Produit
 function calculePrice(priceProdUnit) {
     let quantites = document.getElementById('inputQuantite');
+
     quantites.addEventListener('change', (event) => {
         const result = document.getElementById('totalPrice');
         result.textContent = `${priceProdUnit}` * `${event.target.value}`;
