@@ -99,8 +99,7 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
             </div>
         </div>`;
 
-
-        //--On écoute le petit bouton
+        //--On écoute le petit bouton la
         const btnAjout = document.getElementById('btnAjoutId');
 
         btnAjout.addEventListener('click', function () {
