@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="dist/global.css"/>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Orinoco</title>
+</head>
+<body class="bg-gray-100">
+
+<nav class="header_navbar flex justify-center items-center justify-between flex-wrap mb-3">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+        <i class="far fa-gem fa-2x mr-2 text-purple-700">
+        </i>
+        <a href="index.html">
+            <span class="font-bold text-3xl text-black tracking-tight">Orinoco</span>
+        </a>
+    </div>
+</nav>
+
+<!-- component -->
+<section id="" class="text-gray-700 body-font overflow-hidden bg-transparent">
+    <div class="container px-20 py-32 mx-auto">
+        <!-- component -->
+        <!-- post card -->
+        <div id="main">
+
+        </div>
+
+        <div id="toto">
+
+        </div>
+
+        <div id="empty"></div>
+
+        <div class="mb-6">
+            <div class="text-center text-gray-500 text-3xl font-semibold">
+                Formulaire de commande
+            </div>
+        </div>
+        <form id="form" class="w-full px-48">
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label for="nom" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        NOM
+                    </label>
+                    <input type="text" name="nom" id="nom" minlength="2" maxlength="21"
+                           class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="Jean">
+                    <span class="text-red-700 text-xs italic" id="aideNom"></span>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="prenom" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        PRENOM
+                    </label>
+                    <input type="text" name="prenom" id="prenom" minlength="2" maxlength="21"
+                           class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="Dupont">
+                    <span class="text-red-700 text-xs italic" id="aidePrenom"></span>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label for="adresse" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        ADRESSE
+                    </label>
+                    <input type="text" name="adresse" id="adresse" minlength="3" maxlength="42"
+                           class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="53 rue du Moulin">
+                    <span class="text-red-700 text-xs italic" id="aideAdresse"></span>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="postCode" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        CODE POSTAL
+                    </label>
+                    <input type="text" name="postCode" id="postCode"
+                           class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="75013">
+                    <span class="text-red-700 text-xs italic" id="aidePostCode"></span>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-4">
+                <div class="w-full px-3">
+                    <label for="email" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        E-mail
+                    </label>
+                    <input type="email" name="email" id="email"
+                           class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="maximecrespo@google.com">
+                    <span class="text-red-700 text-xs italic" id="aideCourriel"></span>
+                </div>
+            </div>
+            <p class="text-red-700 mb-6" id="erreur"></p>
+            <div class="md:flex md:items-center">
+                <div class="md:w-1/3">
+                    <button type="submit" id="post_form"
+                            class="shadow focus:shadow-outline hover:opacity-70 focus:outline-none border border-purple-500 font-semibold bg-purple-50 text-purple-700 py-2 px-6 rounded">
+                        Commander
+                    </button>
+                </div>
+                <div class="md:w-2/3"></div>
+            </div>
+        </form>
+
+    </div>
+</section>
+
+
+<script src="panier.js"></script>
+<script src="https://kit.fontawesome.com/d2311b347d.js" crossorigin="anonymous"></script>
+
+</body>
+</html>

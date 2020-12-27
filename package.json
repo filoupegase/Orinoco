@@ -1,0 +1,37 @@
+{
+  "name": "orinoco-backend",
+  "version": "1.0.0",
+  "description": "Teddy Bear",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./sass/main.scss:./css/style.css -w --style compressed",
+    "prefix": "postcss ./css/style.css --use autoprefixer -d ./css/prefixed/",
+    "build": "npx tailwindcss build css/styles.css -o dist/global.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.0.4",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "jquery": "^3.5.1",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.10.15",
+    "mongoose-unique-validator": "^2.0.2",
+    "postcss-csso": "^5.0.0",
+    "postcss-fixes": "^2.0.1",
+    "tailwindcss": "^2.0.1",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "css-loader": "^5.0.1",
+    "postcss": "^8.2.0",
+    "postcss-loader": "^4.1.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

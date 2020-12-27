@@ -1,0 +1,61 @@
+[
+  {
+    "colors": [
+      "Tan",
+      "Chocolate",
+      "Black",
+      "White"
+    ],
+    "_id": "5be9c8541c9d440000665243",
+    "name": "Norbert",
+    "price": 2900,
+    "imageUrl": "http://localhost:3000/images/teddy_1.jpg",
+    "description": "Norbert Ours en Peluche de 32 cm Marron ideal pour calin Lorem ipsum dolor sit amet, consectetur adipisicing elit"
+  },
+  {
+    "colors": [
+      "Pale brown",
+      "Dark brown",
+      "White"
+    ],
+    "_id": "5beaa8bf1c9d440000a57d94",
+    "name": "Arnold",
+    "price": 3900,
+    "imageUrl": "http://localhost:3000/images/teddy_2.jpg",
+    "description": "Lifestyle & More Ours en Peluche géant 25 cm petit Ours en Peluche Doudou velouté Doux - à Aimer"
+  },
+  {
+    "colors": [
+      "Brown"
+    ],
+    "_id": "5beaaa8f1c9d440000a57d95",
+    "name": "Lenny and Carl",
+    "price": 5900,
+    "description": "Offrez cet ours polaire en peluche le plus adorable, de 18 cm, à votre enfant pour le rassurer. Ce nounours est signé CP Company",
+    "imageUrl": "http://localhost:3000/images/teddy_3.jpg"
+  },
+  {
+    "colors": [
+      "Brown",
+      "Blue",
+      "Pink"
+    ],
+    "_id": "5beaabe91c9d440000a57d96",
+    "name": "Gustav",
+    "price": 4500,
+    "imageUrl": "http://localhost:3000/images/teddy_4.jpg",
+    "description": "Ours en peluche habillé d'un joli tee-shirt avec un coeur de 28 cm si doux, de couleur marron-clair"
+  },
+  {
+    "colors": [
+      "Beige",
+      "Tan",
+      "Chocolate"
+    ],
+    "_id": "5beaacd41c9d440000a57d97",
+    "name": "Garfunkel",
+    "price": 5500,
+    "description": "Inware - Peluche Ours Garfunkel, Assis, Beige, 12 cm",
+    "imageUrl": "http://localhost:3000/images/teddy_5.jpg"
+  }
+]
