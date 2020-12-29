@@ -5,11 +5,11 @@ const form = document.getElementById('form')
 //const { v4: uuidv4 } = require('uuid');
 
 let data = JSON.parse(localStorage.getItem('basket'));
-if (data === 0 || data === null) {
+console.log(data);
+ if(data === null && data === 0) {
     emptybasket.innerHTML += `
-<p class="mb-20 text-center mt-20 text-gray-600 text-4xl font-bold">Votre panier est vide :'(</p>
-`;
-} else {
+<p class="mb-20 text-center mt-20 text-gray-600 text-4xl font-bold">Votre panier est vide :'(</p>`
+ } else {
     let total = 0;
     data.forEach(data => {
         total += data.price * data.quantite;
