@@ -71,7 +71,7 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
                 <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">         
                  <div class="flex items-center">
                  <label class="mr-3" for="QuantiteProduit">Quantité</label>
-                   <input id="inputQuantite" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-purple-700 text-base pl-3 pr-3" type="number" min="1" value="1"/>
+                   <input id="inputQuantite" min="1" class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-purple-700 text-base pl-3 pr-3" type="number" min="1" value="1"/>
                     </div>
           <div class="flex ml-6 items-center">
                         <span class="mr-3">Colors</span>
@@ -103,26 +103,26 @@ fetch(`http://localhost:3000/api/teddies/${params.get('id')}`)
         //--On écoute le petit bouton
         const btnAjout = document.getElementById('btnAjoutId');
 
+        btnAjout.addEventListener('click', function () {
+            let quantites = document.getElementById('inputQuantite');
+            if (quantites.value > 0) {
+                ajoutLocalStor()
+            } else {
+                alert("veuillez choisire une valeur positive");
+            }
+        });
+
         //---Fonction qui calcule le prix total sur la page Produit
         function calculePrice(priceProdUnit) {
-            console.log(priceProdUnit)
             let quantites = document.getElementById('inputQuantite');
             quantites.addEventListener('change', (event) => {
                 const result = document.getElementById('totalPrice');
                 result.textContent = `${priceProdUnit}` * `${event.target.value}`;
-                if (event.target.value <= 0) {
-                    return false;
-                } else {
-                    btnAjout.addEventListener('click', function () {
-                        ajoutLocalStor()
-                    });
-                }
             });
         }
 
         //--variables qui récupère les fonctions d'écoute pour le prix total
         let functionPrice = calculePrice(priceProdUnit);
-
 
         //---on catch les données voulues et on stocke dans un objet
         function ajoutLocalStor() {

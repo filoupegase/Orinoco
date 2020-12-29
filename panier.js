@@ -4,7 +4,11 @@ const emptybasket = document.getElementById('empty')
 //const { v4: uuidv4 } = require('uuid');
 
 let data = JSON.parse(localStorage.getItem('basket'));
-if (localStorage.length > 0) {
+if (data.length === 0) {
+    emptybasket.innerHTML += `
+<p class="mb-20 text-center mt-20 text-gray-600 text-4xl font-bold">Votre panier est vide :'(</p>
+`;
+} else {
     let total = 0;
     data.forEach(data => {
             total += data.price * data.quantite;
@@ -30,11 +34,78 @@ if (localStorage.length > 0) {
                     <p class="ml-auto text-gray-600 text-2xl font-bold">${(data.price * data.quantite).toFixed(2)} €</p>
                 </div>
             </div>
-        </div>`;
+        </div>
+        <p class="mb-20 text-center mt-20 text-gray-600 text-4xl font-bold">Total panier : ${total}.00 €</p>
+<div class="mb-6">
+            <div class="text-center text-gray-500 text-3xl font-semibold">
+                Formulaire de commande
+            </div>
+        </div>
+        <form id="form" class="w-full px-48">
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label for="nom" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        NOM
+                    </label>
+                    <input type="text" name="nom" id="nom" minlength="2" maxlength="21"
+                           class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="Jean">
+                    <span class="text-red-700 text-xs italic" id="aideNom"></span>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="prenom" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        PRENOM
+                    </label>
+                    <input type="text" name="prenom" id="prenom" minlength="2" maxlength="21"
+                           class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="Dupont">
+                    <span class="text-red-700 text-xs italic" id="aidePrenom"></span>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-6">
+                <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <label for="adresse" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        ADRESSE
+                    </label>
+                    <input type="text" name="adresse" id="adresse" minlength="3" maxlength="42"
+                           class="appearance-none block w-full text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="53 rue du Moulin">
+                    <span class="text-red-700 text-xs italic" id="aideAdresse"></span>
+                </div>
+                <div class="w-full md:w-1/2 px-3">
+                    <label for="postCode" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        CODE POSTAL
+                    </label>
+                    <input type="text" name="postCode" id="postCode"
+                           class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="75013">
+                    <span class="text-red-700 text-xs italic" id="aidePostCode"></span>
+                </div>
+            </div>
+            <div class="flex flex-wrap -mx-3 mb-4">
+                <div class="w-full px-3">
+                    <label for="email" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                        E-mail
+                    </label>
+                    <input type="email" name="email" id="email"
+                           class="appearance-none block w-full text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
+                           placeholder="maximecrespo@google.com">
+                    <span class="text-red-700 text-xs italic" id="aideCourriel"></span>
+                </div>
+            </div>
+            <p class="text-red-700 mb-6" id="erreur"></p>
+            <div class="md:flex md:items-center">
+                <div class="md:w-1/3">
+                    <button type="submit" id="post_form"
+                            class="shadow focus:shadow-outline hover:opacity-70 focus:outline-none border border-purple-500 font-semibold bg-purple-50 text-purple-700 py-2 px-6 rounded">
+                        Commander
+                    </button>
+                </div>
+                <div class="md:w-2/3"></div>
+            </div>
+        </form>`;
         }
     );
-    totalPrice.innerHTML += total === 0 ? "" : `
-<p class="mb-20 text-center mt-20 text-gray-600 text-4xl font-bold">Total panier : ${total}.00 €</p>`;
 
 //-- fonction de suppression d'un produit
     function deleteItem(_id) {
@@ -138,13 +209,9 @@ if (localStorage.length > 0) {
                 return response.json();
             })
             .then(function (order) {
-            window.location.href = `contact.html?ncomm=${order.orderId}`;
-        }).catch(error => {
+                window.location.href = `contact.html?ncomm=${order.orderId}`;
+            }).catch(error => {
             return alert("Erreur : " + error)
         });
     })
-} else {
-    emptybasket.innerHTML += `
-<p class="mb-20 text-center mt-20 text-gray-600 text-4xl font-bold">Votre panier est vide :'(</p>
-`;
 }
