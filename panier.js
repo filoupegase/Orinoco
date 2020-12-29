@@ -6,7 +6,7 @@ const form = document.getElementById('form')
 
 let data = JSON.parse(localStorage.getItem('basket'));
 console.log(data);
- if(data === null && data === 0) {
+ if(data === null && data.length === 0) {
     emptybasket.innerHTML += `
 <p class="mb-20 text-center mt-20 text-gray-600 text-4xl font-bold">Votre panier est vide :'(</p>`
  } else {
